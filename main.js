@@ -30,7 +30,7 @@ map.on("click", (e) => {
     image: new Icon({
       color: 'rgba(255, 255, 255, )',
       crossOrigin: 'anonymous',
-      src: 'icon.png',
+      src: './assets/icon.png',
       scale: 0.01,
     }),
   }));
