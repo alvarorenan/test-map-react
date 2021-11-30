@@ -7,7 +7,7 @@ import Point from 'ol/geom/Point';
 import { fromLonLat, transform } from 'ol/proj';
 import {Icon, Style} from 'ol/style';
 
-
+//teste
 const map = new Map({
   target: 'map',
   layers: [
@@ -15,8 +15,9 @@ const map = new Map({
       source: new OSM()
     })
   ],
+  // Latitude: -15.7801, Longitude: -47.9292
   view: new View({
-    center: fromLonLat([-35.198429, -5.836685]),
+    center: fromLonLat([-47.9292, -13.7801]),
     zoom: 4.5
   })
 });
