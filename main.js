@@ -7,7 +7,7 @@ import Point from 'ol/geom/Point';
 import { fromLonLat, transform } from 'ol/proj';
 import {Icon, Style} from 'ol/style';
 
-//teste
+
 const map = new Map({
   target: 'map',
   layers: [
