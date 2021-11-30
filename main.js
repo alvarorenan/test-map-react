@@ -6,7 +6,6 @@ import OSM from 'ol/source/OSM';
 import Point from 'ol/geom/Point';
 import { fromLonLat, transform } from 'ol/proj';
 import {Icon, Style} from 'ol/style';
-import GeometryLayout from 'ol/geom/geometrylayout';
 
 
 const map = new Map({
@@ -66,13 +65,13 @@ mapModal.on("click", (e) => {
    console.log(lon, lat);
    
   // if(point.getRevision() == 0){
-    const layer = new Feature({
+     const layer = new Feature({
       
       
-          geometry: pointGeo,
+           geometry: pointGeo,
       
       
-    });
+     });
   
     
 
@@ -91,11 +90,11 @@ mapModal.on("click", (e) => {
   
     const vectorLayer = new VectorLayer({
       source: vectorSource,
-    });
-    mapModal.setLayerGroup(vectorLayer, vectorSource, layer);
+    }); // get all layers
     
+    mapModal.addLayer( vectorLayer);  // adicionar ao mapa
 
-    
+
   // }
-  // map.addLayer(vectorLayer);
+  map.addLayer(vectorLayer);
 })
