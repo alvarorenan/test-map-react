@@ -6,13 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Using OpenLayers with Vite</title>
   </head>
-  <header>
-    <h1>
-      Brasil essa é a nossa praia!
-    </h1>
-  </header>
+  
   <body>
-    <div id="map"></div>
+    <header>
+      <h1>
+        Brasil essa é a nossa praia!
+      </h1>
+    </header>
+    <main>
+
+      <div id="container" class="container">
+        <div class="modal">
+          <div>
+            <span>Nome:</span>
+            <input type="text">
+            <span>Descrição</span>
+            <textarea name="" id="" cols="30" rows="5" style="  resize: none;"></textarea>
+          </div>
+          <div id="mapModal"></div>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    
+      <button id="btnAdicionar" class="btn">Adicionar</button>
+    </main>  
     <script type="module" src="./main.js"></script>
   </body>
 </html>
