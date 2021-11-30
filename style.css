@@ -104,6 +104,22 @@ footer{
   -webkit-box-shadow: 0px 6px 8px 0px rgba(204,199,199,1);
   -moz-box-shadow: 0px 6px 8px 0px rgba(204,199,199,1);
 }
+#btnClose{
+  width: 72px;
+  height: 32px;
+  position: absolute;
+z-index: 50;
+display: flex;
+align-items: center;
+justify-content: center;
+top: 32px;
+right: 25%;
+padding: 8px;
+width: 72px;
+height: 32px;
+
+
+}
 
 #mapModal {
   

@@ -6,6 +6,7 @@ import OSM from 'ol/source/OSM';
 import Point from 'ol/geom/Point';
 import { fromLonLat, transform } from 'ol/proj';
 import {Icon, Style} from 'ol/style';
+import GeometryLayout from 'ol/geom/geometrylayout';
 
 
 const map = new Map({
@@ -15,9 +16,8 @@ const map = new Map({
       source: new OSM()
     })
   ],
-  // Latitude: -15.7801, Longitude: -47.9292
   view: new View({
-    center: fromLonLat([-47.9292, -13.7801]),
+    center: fromLonLat([-35.198429, -5.836685]),
     zoom: 4.5
   })
 });
@@ -42,15 +42,40 @@ btnAdicionar.addEventListener("click", () => {
   container.style = "  visibility: visible;"
 });
 
+let btnClose = document.getElementById("btnClose");
+
+btnClose.addEventListener("click", () => {
+  let container = document.getElementById("container");
+  container.style = "  visibility: hidden;"
+});
+
 mapModal.on("click", (e) => {
+  
   let point =  new Point(fromLonLat(transform(e.coordinate, 'EPSG:3857', 'EPSG:4326')));
-  console.log(point.getRevision());
-  point.changed()
+  point.transform( 'EPSG:3857', 'EPSG:4326');
+  
+  let lon = point.getCoordinates()[0] ;
+  let lat = point.getCoordinates()[1];
+  point.setCoordinates([lon, lat]);
+
+
+  
+  
+  let pointGeo = new Point(transform([parseFloat(lon), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857'));
+ 
+   console.log(lon, lat);
+   
   // if(point.getRevision() == 0){
     const layer = new Feature({
-      geometry: point
+      
+      
+          geometry: pointGeo,
+      
+      
     });
   
+    
+
     layer.setStyle( new Style({
       image: new Icon({
         color: 'rgba(255, 255, 255, )',
@@ -59,7 +84,7 @@ mapModal.on("click", (e) => {
         scale: 0.01,
       }),
     }));
-  
+    
     const vectorSource = new VectorSource({
       features: [layer],
     });
@@ -67,8 +92,10 @@ mapModal.on("click", (e) => {
     const vectorLayer = new VectorLayer({
       source: vectorSource,
     });
-    mapModal.set(vectorLayer);  
-  // }
-  
-})
+    mapModal.setLayerGroup(vectorLayer, vectorSource, layer);
+    
 
+    
+  // }
+  // map.addLayer(vectorLayer);
+})
