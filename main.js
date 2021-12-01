@@ -1,10 +1,13 @@
 import './style.css';
 import './node_modules/leaflet/dist/leaflet.css'; 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-var map = L.map('map').setView([-5.836685 ,-35.198429], 4.5);
+import 'leaflet.sync';
+
+var map = L.map('map').setView([-15.77972, -48.92972], 4.2);
 
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
+  minZoom: 2,
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   id: 'mapbox/streets-v11',
@@ -12,8 +15,8 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
   zoomOffset: -1
 }).addTo(map);
 
-var mapModal = L.map('mapModal').setView([-5.756361457178641 , -35.19503503036023], 15);
-
+var mapModal = L.map('mapModal').setView([-5.756361457178641 , -35.19503503036023], 6);
+map.sync(mapModal);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -32,6 +35,7 @@ btnAdicionar.addEventListener("click", () => {
 
 var marker = L.marker([0,0]);
 var aux;
+var titulo,desc;
 
 let btnClose = document.getElementById("btnClose");
 
@@ -44,13 +48,18 @@ btnClose.addEventListener("click", () => {
 let btnSalvar = document.getElementById("btnSalvar");
 
 btnSalvar.addEventListener("click", () => {
-  marker = L.marker(aux).addTo(map); 
+  marker = L.marker(aux).addTo(map).bindPopup('<b>'+titulo+'</b><br>'+ desc+'</br>').openPopup();; 
+  container.style = "  visibility: hidden;"
 });
+
+
 
 mapModal.on('click', (e) => {
   mapModal.removeLayer(marker);
   let nome = document.getElementById("nomeInput").value;
   let descricao = document.getElementById("descricaoInput").value;
+  titulo = nome;
+  desc = descricao;
   marker = L.marker(e.latlng).addTo(mapModal)
   .bindPopup('<b>'+nome+'</b><br>'+ descricao+'</br>').openPopup();
   aux = e.latlng;
