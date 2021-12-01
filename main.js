@@ -1,38 +1,26 @@
 import './style.css';
-import { Map, View, Feature} from 'ol';
-import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
-import VectorSource from 'ol/source/Vector';
-import OSM from 'ol/source/OSM';
-import Point from 'ol/geom/Point';
-import { fromLonLat, transform } from 'ol/proj';
-import {Icon, Style} from 'ol/style';
 
+var map = L.map('map').setView([-5.836685 ,-35.198429], 4.5);
 
-const map = new Map({
-  target: 'map',
-  layers: [
-    new TileLayer({
-      source: new OSM()
-    })
-  ],
-  view: new View({
-    center: fromLonLat([-35.198429, -5.836685]),
-    zoom: 4.5
-  })
-});
+var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1
+}).addTo(map);
 
-const mapModal = new Map({
-  target: 'mapModal',
-  layers: [
-    new TileLayer({
-      source: new OSM()
-    })
-  ],
-  view: new View({
-    center: fromLonLat([-35.198429, -5.836685]),
-    zoom: 4.5
-  })
-});
+var mapModal = L.map('mapModal').setView([-5.836685 ,-35.198429], 4.5);
+
+var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1
+}).addTo(mapModal);
 
 let btnAdicionar = document.getElementById("btnAdicionar");
 
@@ -41,60 +29,28 @@ btnAdicionar.addEventListener("click", () => {
   container.style = "  visibility: visible;"
 });
 
+var marker = L.marker([0,0]);
+var aux;
+
 let btnClose = document.getElementById("btnClose");
 
 btnClose.addEventListener("click", () => {
   let container = document.getElementById("container");
   container.style = "  visibility: hidden;"
+  mapModal.removeLayer(marker);
 });
 
-mapModal.on("click", (e) => {
-  
-  let point =  new Point(fromLonLat(transform(e.coordinate, 'EPSG:3857', 'EPSG:4326')));
-  point.transform( 'EPSG:3857', 'EPSG:4326');
-  
-  let lon = point.getCoordinates()[0] ;
-  let lat = point.getCoordinates()[1];
-  point.setCoordinates([lon, lat]);
+let btnSalvar = document.getElementById("btnSalvar");
 
+btnSalvar.addEventListener("click", () => {
+  marker = L.marker(aux).addTo(map); 
+});
 
-  
-  
-  let pointGeo = new Point(transform([parseFloat(lon), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857'));
- 
-   console.log(lon, lat);
-   
-  // if(point.getRevision() == 0){
-     const layer = new Feature({
-      
-      
-           geometry: pointGeo,
-      
-      
-     });
-  
-    
-
-    layer.setStyle( new Style({
-      image: new Icon({
-        color: 'rgba(255, 255, 255, )',
-        crossOrigin: 'anonymous',
-        src: './assets/icon.png',
-        scale: 0.01,
-      }),
-    }));
-    
-    const vectorSource = new VectorSource({
-      features: [layer],
-    });
-  
-    const vectorLayer = new VectorLayer({
-      source: vectorSource,
-    }); // get all layers
-    
-    mapModal.addLayer( vectorLayer);  // adicionar ao mapa
-
-
-  // }
-  map.addLayer(vectorLayer);
-})
+mapModal.on('click', (e) => {
+  mapModal.removeLayer(marker);
+  let nome = document.getElementById("nomeInput").value;
+  let descricao = document.getElementById("descricaoInput").value;
+  marker = L.marker(e.latlng).addTo(mapModal)
+  .bindPopup('<b>'+nome+'</b><br>'+ descricao+'</br>').openPopup();
+  aux = e.latlng;
+});
