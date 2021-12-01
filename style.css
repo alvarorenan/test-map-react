@@ -152,9 +152,31 @@ footer{
 
   z-index: 50;
 }
-
+#btnDelete{
+  position: absolute;
+  bottom: 128px;
+  left: 180px;
+}
 #mapModal {
   z-index: 0;
   width: 90%;
   height: 100%;  
+}
+#iconeAcampamento{
+  position: absolute;
+  bottom: 128px;
+  left: 220px;
+}
+#iconeSantorini{
+  position: absolute;
+  bottom: 128px;
+  left: 164px;
+}
+.btnMarker img{
+  width: 100%;
+}
+
+.btnMarker{
+  width: 48px;
+  height: 48px;
 }
