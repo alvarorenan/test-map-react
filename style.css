@@ -66,15 +66,12 @@ footer{
 
 
 .btn {
-  position: absolute;
-  z-index: 50;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  right: 64px;
-  bottom: 64px;
+
 
   padding: 8px 32px;
   
@@ -90,13 +87,21 @@ footer{
 
 }
 
+#btnAdicionar {
+  position: absolute;
+  z-index: 50;
+
+  right: 64px;
+  bottom: 64px; 
+
+}
+
 .btnIcon{
   width: 100%;
 }
 
 .container{
   visibility: hidden;
-  position: relative;
 
   display: flex;
   align-items: center;
@@ -107,42 +112,49 @@ footer{
 }
 .modal{
   background-color: white;
+  position: relative;
   
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   
   z-index: 50;
   
-  width: 60%;
-
+  width: 75%;
   height: 100%;
+  padding: 16px;
 
   border-radius: 4px;
   box-shadow: 0px 6px 8px 0px rgba(204,199,199,1);
   -webkit-box-shadow: 0px 6px 8px 0px rgba(204,199,199,1);
   -moz-box-shadow: 0px 6px 8px 0px rgba(204,199,199,1);
 }
+
 #btnClose{
-  width: 72px;
-  height: 32px;
+
   position: absolute;
-z-index: 50;
-display: flex;
-align-items: center;
-justify-content: center;
-top: 32px;
-right: 25%;
-padding: 8px;
-width: 72px;
-height: 32px;
 
+  top: 16px;
+  left: 16px;
+}
+#modalMarkerDescription{
+  display: flex;
+  flex-direction: column;
 
+  margin: 0 16px 0 0;
+}
+#btnSalvar{
+  position: absolute;
+
+  right: 32px;
+  bottom: 32px;
+
+  z-index: 50;
 }
 
 #mapModal {
-  
-  width: 50%;
-  height: 60%;  
+  z-index: 0;
+  width: 90%;
+  height: 100%;  
 }
