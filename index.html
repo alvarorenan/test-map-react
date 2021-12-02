@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="./assets/logo.png" />
-   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Brasil essa é a nossa praia!</title>
   </head>
   
   <body>
     <header>
       <img src="./assets/logo.png" alt="">
+      
     </header>
+    
     <main>
-
+      <div class="btn-group">
+        <button type="button" id="btnAll" class="btn btn-success">Todos</button>
+        <button type="button" id="btnSantorini" class="btn btn-primary">Igrejas</button>
+        <button type="button" id="btnAcampamento" class="btn btn-danger">Acampamentos</button>
+      </div>
       <div id="container" class="container">
-       
+      
         <div class="modal">
          
           <button id="btnClose"  class="btn">Fechar</button>
@@ -25,6 +31,10 @@
           <button id="iconeSantorini" class="btnMarker">
             <img src="./assets/santorini.png" alt="">
           </button>
+          <button id="iconeNormal" class="btnMarker">
+            <img src="./assets/icon.png" alt="" style="width: 70%;">
+          </button>
+          
           <div id="modalMarkerDescription">
             <span>Nome:</span>
             <input id="nomeInput" type="text">
