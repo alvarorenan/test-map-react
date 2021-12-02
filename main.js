@@ -19,8 +19,8 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 
 var mapModal = L.map('mapModal').setView([-5.756361457178641 , -35.19503503036023], 6);
 map.sync(mapModal);
-map.setMaxBounds([[-90, -180], [90, 180]]); 
-mapModal.setMaxBounds([[-90, -180], [90, 180]]); 
+map.setMaxBounds([[-90, -180], [90, 180]]);  // limit map 
+mapModal.setMaxBounds([[-90, -180], [90, 180]]);  // limit map 
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
   minZoom: 2,
