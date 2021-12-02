@@ -37,11 +37,12 @@ btnAdicionar.addEventListener("click", () => {
 var icon = L.icon({
   iconUrl: './assets/icon.png',
 
-  iconSize:     [38, 95], // size of the icon
+  iconSize:     [24, 32], // size of the icon
   shadowSize:   [50, 64], // size of the shadow
-  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
   shadowAnchor: [4, 62],  // the same for the shadow
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var marker = L.marker([0,0]);
@@ -109,21 +110,21 @@ btnAcampamento.addEventListener("click", ()=>{
   map.addLayer(acampamentoLayerGroup);
 });
 
-let iconeSantorini = document.getElementById("iconeSantorini")
-let iconeAcampamento = document.getElementById("iconeAcampamento")
+let iconeSantorini = document.getElementById("iconeSantorini");
+let iconeAcampamento = document.getElementById("iconeAcampamento");
+let iconeNormal = document.getElementById("iconeNormal");
 
 iconeSantorini.addEventListener("click", ()=>{
   markerID = 1;
   icon = L.icon({
     iconUrl: './assets/santorini.png',
   
-    iconSize:     [40, 95], // size of the icon
+    iconSize:     [32, 32], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
-  marker = L.marker([0,0], {icon});
 })
 
 
@@ -132,15 +133,27 @@ iconeAcampamento.addEventListener("click", ()=>{
   icon = L.icon({
     iconUrl: './assets/acampamentoIcon.png',
   
-    iconSize:     [40, 95], // size of the icon
+    iconSize:     [32, 32], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
-  marker = L.marker([0,0], {icon});
 })
     
+iconeNormal.addEventListener("click", ()=>{
+  markerID = 2;
+  icon = L.icon({
+    iconUrl: './assets/icon.png',
+  
+    iconSize:     [24, 32], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
+})
+
 mapModal.on('click', (e) => {
   mapModal.removeLayer(marker);
   let nome = document.getElementById("nomeInput").value;

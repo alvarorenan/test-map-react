@@ -195,6 +195,12 @@ footer {
   bottom: 128px;
   left: 164px;
 }
+
+#iconeNormal {
+  position: absolute;
+  bottom: 128px;
+  left: 108px;
+}
 .btnMarker img {
   width: 100%;
 }
