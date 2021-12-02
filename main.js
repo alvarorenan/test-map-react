@@ -41,7 +41,7 @@ var icon = L.icon({
   shadowSize:   [50, 64], // size of the shadow
   iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
   shadowAnchor: [4, 62],  // the same for the shadow
-  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
 
 });
 
@@ -123,7 +123,7 @@ iconeSantorini.addEventListener("click", ()=>{
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
   });
 })
 
@@ -137,7 +137,7 @@ iconeAcampamento.addEventListener("click", ()=>{
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
   });
 })
     
@@ -150,7 +150,7 @@ iconeNormal.addEventListener("click", ()=>{
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [5, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [7.4, -40] // point from which the popup should open relative to the iconAnchor
   });
 })
 
