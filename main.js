@@ -8,6 +8,7 @@ var map = L.map('map').setView([-15.77972, -48.92972], 4.2);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
   minZoom: 2,
+  zoom: 5,
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   id: 'mapbox/streets-v11',
@@ -17,6 +18,8 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 
 var mapModal = L.map('mapModal').setView([-5.756361457178641 , -35.19503503036023], 6);
 map.sync(mapModal);
+map.setMaxBounds([[-90, -180], [90, 180]]); // limit map to North America 
+mapModal.setMaxBounds([[-90, -180], [90, 180]]); // limit mapModal to map bounds
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
   maxZoom: 18,
   minZoom: 2,
@@ -36,11 +39,12 @@ btnAdicionar.addEventListener("click", () => {
 var icon = L.icon({
   iconUrl: './assets/icon.png',
 
-  iconSize:     [38, 95], // size of the icon
-  shadowSize:   [50, 64], // size of the shadow
-  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-  shadowAnchor: [4, 62],  // the same for the shadow
-  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  iconSize:     [24, 32], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [13, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [7.4, -40] // point from which the popup should open relative to the iconAnchor
+
 });
 
 var marker = L.marker([0,0]);
@@ -80,7 +84,7 @@ iconeSantorini.addEventListener("click", ()=>{
   
     iconSize:     [40, 95], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [3, 30], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
@@ -93,9 +97,22 @@ iconeAcampamento.addEventListener("click", ()=>{
   
     iconSize:     [40, 95], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [3, 30], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
+  });
+})
+    
+iconeNormal.addEventListener("click", ()=>{
+  markerID = 2;
+  icon = L.icon({
+    iconUrl: './assets/icon.png',
+  
+    iconSize:     [24, 32], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [13, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [7.4, -40] // point from which the popup should open relative to the iconAnchor
   });
   marker = L.marker([0,0], {icon});
 })
