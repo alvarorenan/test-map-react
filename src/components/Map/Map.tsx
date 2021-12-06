@@ -46,10 +46,19 @@ const Map = ({
   return (
     <div className="map__container">
       <MapContainer
-        center={defaultPosition}
-        zoom={13}
-        scrollWheelZoom={false}
-        style={{ height: "100vh" }}
+        // @ts-ignore
+        center={[-15.77972, -48.92972]}
+        zoom={4.5}
+        maxZoom={18}
+        minZoom={5}
+        style={{
+          width: '100%',
+          height: '100vh',
+          position: 'absolute',
+          top: '0',
+          bottom: '0'
+
+        }}
         zoomControl={false}
       >
         <TileLayer

@@ -18,7 +18,7 @@ const Header = ({ searchIsVisible, setSearchVisibility }: any) => {
         }}
         onClick={() => setSearchVisibility(!searchIsVisible)}
       ></CgPlayListSearch>
-      <span>Paris</span>
+      <span>Brasil Nossa Praia</span>
     </div>
   );
 };
